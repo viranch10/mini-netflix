@@ -5,8 +5,12 @@ const Footer = () => {
             <style jsx>
                 {`
                     .footer {
+                        background-color: rgb(229,9,20);
                         text-align: center;
+                        padding: 16px;
+                        font-weight: bold;
                     }    
+
                 `}
             </style>
         </div>

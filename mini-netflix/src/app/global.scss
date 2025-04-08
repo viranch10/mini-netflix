@@ -1,9 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Poppins:wght@100&display=swap');
 
 html, head {
-    font-family: "Anton", sans-serif;
-    background-color: black;
-    color: #FFF;
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  background-color: black;
+  color: #FFF;
+}
+
+h1 a{
+  color: rgb(229,9,20);
+  font-weight: 600;
 }
 
 a {
@@ -38,4 +45,19 @@ a {
     }
   }
   
-  
+  .cta-btn {
+    background-color: rgb(229,9,20);
+    color: #FFF;
+    height: max-content;
+    width: fit-content;
+    font-family: "Anton", sans-serif;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      margin-top: 10px;
+      font-size: 10px;
+    }
+  }
