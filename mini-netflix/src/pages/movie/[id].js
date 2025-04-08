@@ -1,30 +1,55 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import generateRandomKey from '@/utils/utils';
+import styles from "./index.module.css"
 
-const API_KEY = '7ca96aa2';
 
 export default function MovieDetails() {
   const router = useRouter();
   const { id } = router.query;
   const [movie, setMovie] = useState(null);
+  const API_KEY = process.env.NEXT_PUBLIC_OMDB_API_KEY;
 
   useEffect(() => {
     if (!id) return;
-    fetch(`https://www.omdbapi.com/?apikey=7ca96aa2&i=${id}`)
+    fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`)
       .then((res) => res.json())
       .then((data) => {
         setMovie(data)});
   }, [id]);
 
-  if (!movie) return <div className="p-4">Loading...</div>;
+  if (!movie) return <div>Loading...</div>;
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <img src={movie.Poster} alt={`Poster of ${movie.Title}`} className="rounded mb-4" />
-      {console.log('movie: ', movie)}
-      <h1 className="text-3xl font-bold mb-2">{movie.Title}</h1>
-      <p className="mb-2">{movie.Plot}</p>
-      <p className="text-lg font-medium">Rating: {movie.imdbRating}</p>
+    <div className="movie-detail">
+    <div className='container'>
+      <div className={styles.detailBlock}>
+      {movie.Response === "True" ? 
+      <>
+        <img src={movie.Poster || '/clapboard.png'} alt={`Poster of ${movie.Title}`} />
+        <h2>Movie Name: {movie.Title}</h2>
+        <p>{movie.Plot}</p>
+        <h4>Ratings</h4>
+        {movie?.Ratings?.length > 0 &&
+          movie.Ratings.map((rate, ) => {
+            const randomKey = generateRandomKey(20);
+            return (
+              <>
+                <p key={randomKey}>{rate.Source}: {rate.Value}</p>
+            </>
+          )})
+        }
+        
+        <p>imdbRating : {movie.imdbRating}</p>
+        </>
+        :
+        <>
+          <img src='/clapboard.png' alt='Poster of Clapboard' />
+          <h3>Incorrect Movie ID</h3>
+        </>}
+      </div> 
+      
+    </div>
     </div>
   );
 }

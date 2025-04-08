@@ -14,6 +14,10 @@ return (
                     color: red;
                 }
                 
+                h1 {
+                    font-weight: bold;
+                }
+
                 .navbar {
                     align-self: center;
                 }
