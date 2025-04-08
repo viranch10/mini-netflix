@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Poppins:wght@100&display=swap');
+
+html, head {
+    font-family: "Anton", sans-serif;
+    background-color: black;
+    color: #FFF;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  
+    @media (min-width: 640px) {
+      padding: 1.5rem;
+    }
+  
+    @media (min-width: 1024px) {
+      padding: 2rem;
+    }
+}
+
+.grid-3x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr); // 2x on tablets
+    }
+  
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr; // 1x on phones
+    }
+  }
+  
+  
